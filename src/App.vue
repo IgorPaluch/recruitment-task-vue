@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <SearchInput @search-result="updateResult" />
+    <SearchResult :result="searchResult" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SearchInput from './components/SearchInput.vue';
+import SearchResult from './components/SearchResult.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    SearchInput,
+    SearchResult,
+  },
+  data() {
+    return {
+      searchResult: [],
+    };
+  },
+  methods: {
+    updateResult(result) {
+      this.searchResult = result;
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
